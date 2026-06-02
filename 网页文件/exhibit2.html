@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湖口草龙 | 龙韵薪传浙江龙灯数字博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", serif;
+        }
+
+        body {
+            background: #f9f6f0;
+        }
+        .aaa{
+            margin-left: 50px;
+        }
+        /* 导航栏 */
+        .navbar {
+            background: linear-gradient(to right, #9B2226, #B11F24);
+            padding: 0px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .logo .dragon {
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* 主容器：左右布局 */
+        .main-layout {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            height: 700px;
+        }
+
+        /* 左侧按钮栏：垂直均匀分布 */
+        .left-menu {
+            width: 220px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: sticky;
+            top: 100px;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 16px 20px;
+            background: #9B2226;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: #B11F24;
+            color: #FFD700;
+        }
+
+        /* 右侧内容区 */
+        .right-container {
+            flex: 1;
+        }
+
+        .right-content {
+            width: 100%;
+            background: white;
+            border: 2px solid #9B2226;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(130,0,0,0.15);
+            min-height: 600px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.show {
+            display: block;
+        }
+
+        /* 图片 + 竖排文字 布局 */
+        .img-text-layout {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            margin-top: 15px;
+        }
+
+        /* 图片宽度 70% */
+        .product-img {
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* 竖排文字核心样式 + 靠右对齐 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 16px;
+            line-height: 2.2;
+            color: #444;
+            letter-spacing: 4px;
+            height: 50%;
+            text-align: right;
+        }
+
+        /* 文字样式 */
+        .content-title {
+            color: #9B2226;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .time-tag {
+            background: #9B2226;
+            color: #FFD700;
+            padding: 6px 15px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .product-desc {
+            line-height: 1.9;
+            color: #444;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #9B2226;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .main-layout {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-menu {
+                width: 100%;
+                height: auto;
+                gap: 10px;
+                position: static;
+            }
+            .img-text-layout {
+                flex-direction: column;
+            }
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" width="8%">
+            <h1>龙韵薪传浙江龙灯数字博物馆</h1>
+        </div>
+        <div class="nav-menu">
+            <a href="1.html">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 左右布局主体 -->
+    <div class="main-layout">
+        <!-- 左侧4个按钮 + 返回 -->
+        <div class="left-menu">
+            <button class="menu-btn active" onclick="showTab(1)">1. 产品展示</button>
+            <button class="menu-btn" onclick="showTab(2)">2. 制作工艺</button>
+            <button class="menu-btn" onclick="showTab(3)">3. 龙灯历史</button>
+            <button class="menu-btn" onclick="showTab(4)">4. 文化传承</button>
+            <a href="1.html" class="menu-btn">← 返回馆藏列表</a>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="right-container">
+            <div class="right-content">
+                <!-- 1. 产品展示 → 图片 + 右侧竖排文字 -->
+                <div class="tab-panel show" id="tab1">
+                    <h3 class="content-title">湖口草龙</h3>
+                    
+                    <div class="img-text-layout">
+                        <img src="龙灯2.jpg"  alt="湖口草龙" class="product-img">
+                        <p class="vertical-text">
+                            湖口草龙是江西省九江市湖口县独有的传统民俗舞龙，也是国家级非物质文化遗产，被誉为 “中华一绝”。整条龙完全由天然稻草、竹篾、麻绳手工扎制而成，不施任何颜料，以稻草的原色呈现出质朴而磅礴的生命力。龙身由数百节稻草扎制的龙节串联，最长可达百米，舞动时金鳞翻涌、气势如虹，是农耕文明里诞生的 “活态图腾”。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 制作工艺 -->
+                <div class="tab-panel" id="tab2">
+                    <h3 class="content-title">制作工艺</h3>
+                    <p class="product-desc">
+                        湖口草龙的制作工艺是一门濒临失传的 “指尖绝活”，全程纯手工、无机械：<br>
+选料备料：选用晚季金黄的糯稻草，经过晾晒、熏蒸、捶打等多道工序，让稻草柔韧不易断；同时准备竹篾、麻绳作为骨架和连接件。
+骨架扎制：以竹篾为骨，扎制龙头、龙身、龙尾的框架，龙头造型威严，龙须、龙角、龙眼等细节都用稻草精细编织而成。
+编扎成型：将处理好的稻草以搓、拧、编、扎等技法，紧密缠绕在竹篾骨架上，每一寸龙身都由稻草层层覆盖，纹理细腻，龙鳞栩栩如生。
+组装点睛：将扎好的龙节用麻绳串联成整条龙，最后点睛开光，赋予草龙 “灵性”，整个过程耗时数月，是匠人耐心与匠心的极致体现。
+                    </p>
+                    <img src="制作3.jpg"  alt="湖口草龙" width="55%" >
+                    <img src="制作4.jpg"  alt="湖口草龙" width="30%" class="aaa">
+                </div>
+
+                <!-- 3. 龙灯历史 -->
+                <div class="tab-panel" id="tab3">
+                    <h3 class="content-title">龙灯历史</h3>
+                    <p class="product-desc">
+                        湖口草龙的传承扎根于鄱阳湖农耕文明，历史脉络清晰：<br>
+起源期（隋唐）：湖口地区自古就有 “草龙祭天” 的习俗，隋唐时期，百姓用稻草扎制草龙，祈求风调雨顺、五谷丰登，这是湖口草龙的雏形。<br>
+成熟期（明清）：明清时期，草龙扎制工艺日趋成熟，造型愈发精致，舞龙仪式也逐渐完善，成为当地春节、元宵期间最重要的民俗活动。<br>
+濒危期（近现代）：随着农耕生活方式的改变，草龙制作技艺一度濒临失传，仅少数老匠人掌握完整技法。<br>
+复兴期（当代）：2006 年，湖口草龙入选第一批国家级非物质文化遗产名录，经过抢救性保护与传承，草龙重新走进大众视野，多次在国内外展演中大放异彩。
+                    </p>
+                </div>
+
+                <!-- 4. 文化传承 -->
+                <div class="tab-panel" id="tab4">
+                    <h3 class="content-title">文化传承</h3>
+                    <p class="product-desc">
+                        湖口草龙早已超越了 “舞龙” 本身，成为农耕文化与匠心精神的载体：<br>
+农耕图腾的精神寄托：草龙以稻草为材，是农耕文明的直接产物，寄托了百姓对土地的敬畏、对丰收的祈愿，是人与自然和谐共生的文化符号。<br>
+匠心精神的活态传承：草龙的制作技艺复杂、耗时漫长，传承的不仅是扎制技法，更是精益求精、坚守传统的匠人精神。<br>
+民俗文化的纽带桥梁：如今，湖口草龙走进校园、社区，通过非遗课堂、民俗展演等形式，让年轻人了解这门古老技艺，让千年草龙在新时代焕发新生，成为连接传统与现代的文化纽带。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        龙韵薪传浙江龙灯数字博物馆 © 2026
+    </div>
+
+    <script>
+        // 切换面板功能
+        function showTab(index) {
+            let panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(p => p.classList.remove('show'));
+            document.getElementById('tab' + index).classList.add('show');
+
+            let btns = document.querySelectorAll('.menu-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>

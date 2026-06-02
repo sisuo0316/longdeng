@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龙韵薪传浙江龙灯数字博物馆 | 红色文脉 国之瑰宝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", serif;
+        }
+
+        body {
+            background: #f9f6f0;
+            /* 关键：给body底部留出空间，避免内容被固定页脚遮挡 */
+            padding-bottom: 60px;
+        }
+
+        /* 导航栏 - 红金主题 */
+        .navbar {
+            background: linear-gradient(to right, #9B2226, #B11F24);
+            padding: 5px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .logo .dragon {
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* 横幅 - 大气龙纹背景 */
+        .banner {
+            height: 500px;
+            background: linear-gradient(rgba(120,0,0,0.7), rgba(80,0,0,0.7)), 
+                        url('https://picsum.photos/id/1043/1920/1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner::before {
+            content: "龍";
+            position: absolute;
+            font-size: 260px;
+            color: rgba(255,255,255,0.07);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .banner h2 {
+            font-size: 56px;
+            color: #FFD700;
+            margin-bottom: 15px;
+            z-index: 1;
+            letter-spacing: 4px;
+        }
+
+        .banner p {
+            font-size: 20px;
+            max-width: 800px;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        /* 展品标题 */
+        .title {
+            text-align: center;
+            font-size: 34px;
+            color: #9B2226;
+            margin: 60px 0 30px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .title::after {
+            content: "";
+            width: 100px;
+            height: 3px;
+            background: #FFD700;
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 展品布局 */
+        .exhibit-box {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* 展品卡片 */
+        .card {
+            background: white;
+            border: 2px solid #9B2226;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(130,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #FFD700;
+        }
+
+        .card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h3 {
+            color: #9B2226;
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .card-info .tag {
+            color: #B11F24;
+            font-size: 14px;
+        }
+
+        /* 页脚 - 固定在视口底部 */
+        .footer {
+            background: #9B2226;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+            /* 关键样式 */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .exhibit-box {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding-bottom: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 导航 -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" width="8%">
+            <h1>龙韵薪传浙江龙灯数字博物馆</h1>
+        </div>
+        <div class="nav-menu">
+            <a href="#home">首页</a>
+            <a href="#exhibit">馆藏珍品</a>
+            <a href="#">参观指南</a>
+            <a href="#">关于我们</a>
+        </div>
+    </div>
+
+    <!-- 横幅 -->
+    <div class="banner" id="home">
+        <h2>守龙灯古·传非遗薪火</h2>
+        <p>守护龙灯千年古韵，赓续非遗文化薪火，传承民俗匠心，绽放乡土文脉风华</p>
+    </div>
+
+    <!-- 展品区 -->
+    <h2 class="title" id="exhibit">馆藏龙纹国宝精品</h2>
+    <div class="exhibit-box">
+        <a href="exhibit1.html" class="card">
+            <div class="card-info">
+                <h3>浦江板凳龙</h3>
+                <div class="tag">千年非遗民俗瑰宝</div>
+            </div>
+        </a>
+
+        <a href="exhibit2.html" class="card">
+            <div class="card-info">
+                <h3>湖口草龙</h3>
+                <div class="tag">千年匠心的农耕图腾</div>
+            </div>
+        </a>
+
+        <a href="exhibit3.html" class="card">
+            <div class="card-info">
+                <h3>萧山河上龙灯</h3>
+                <div class="tag">灯影里的千年民俗盛宴</div>
+            </div>
+        </a>
+
+        <a href="exhibit4.html" class="card">
+            <div class="card-info">
+                <h3>浦寨火龙</h3>
+                <div class="tag">烈焰中的千年民俗图腾</div>
+            </div>
+        </a>
+        <a href="#" class="card">
+    <div class="card-info">
+        <h3>铜梁龙灯</h3>
+        <div class="tag">中华龙舞的非遗巅峰</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>连城姑田游龙</h3>
+        <div class="tag">天下第一龙的民俗传奇</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>佛山彩龙灯</h3>
+        <div class="tag">岭南匠心编织的祥瑞</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>平江九龙舞</h3>
+        <div class="tag">湘东大地的龙腾盛景</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>婺源板龙</h3>
+        <div class="tag">徽乡古俗的祈福长龙</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>大田板灯龙</h3>
+        <div class="tag">闽山古村的灯龙华章</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>金寨火龙</h3>
+        <div class="tag">山野乡土的炽热龙俗</div>
+    </div>
+</a>
+
+<a href="#" class="card">
+    <div class="card-info">
+        <h3>嘉善百叶龙</h3>
+        <div class="tag">荷叶化龙的江南绝艺</div>
+    </div>
+</a>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        龙韵薪传浙江龙灯数字博物馆 © 2026 
+    </div>
+
+</body>
+</html>

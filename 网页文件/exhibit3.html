@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萧山河上龙灯 | 龙韵薪传浙江龙灯数字博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", serif;
+        }
+
+        body {
+            background: #f9f6f0;
+        }
+        .aaa{
+            margin-left: 20px;
+        }
+        /* 导航栏 */
+        .navbar {
+            background: linear-gradient(to right, #9B2226, #B11F24);
+            padding: 0px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .logo .dragon {
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* 主容器：左右布局 */
+        .main-layout {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            height: 700px;
+        }
+
+        /* 左侧按钮栏：垂直均匀分布 */
+        .left-menu {
+            width: 220px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: sticky;
+            top: 100px;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 16px 20px;
+            background: #9B2226;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: #B11F24;
+            color: #FFD700;
+        }
+
+        /* 右侧内容区 */
+        .right-container {
+            flex: 1;
+        }
+
+        .right-content {
+            width: 100%;
+            background: white;
+            border: 2px solid #9B2226;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(130,0,0,0.15);
+            min-height: 600px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.show {
+            display: block;
+        }
+
+        /* 图片 + 竖排文字 布局 */
+        .img-text-layout {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            margin-top: 15px;
+        }
+
+        /* 图片宽度 70% */
+        .product-img {
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* 竖排文字核心样式 */
+        .vertical-text {
+            writing-mode: vertical-rl; /* 文字竖排 */
+            text-orientation: upright;
+            font-size: 16px;
+            line-height: 2.2;
+            color: #444;
+            letter-spacing: 4px;
+            height: 50%;
+            text-align: right;
+        }
+
+        /* 文字样式 */
+        .content-title {
+            color: #9B2226;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .time-tag {
+            background: #9B2226;
+            color: #FFD700;
+            padding: 6px 15px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .product-desc {
+            line-height: 1.9;
+            color: #444;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #9B2226;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .main-layout {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-menu {
+                width: 100%;
+                height: auto;
+                gap: 10px;
+                position: static;
+            }
+            .img-text-layout {
+                flex-direction: column;
+            }
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" width="8%">
+            <h1>龙韵薪传浙江龙灯数字博物馆</h1>
+        </div>
+        <div class="nav-menu">
+            <a href="1.html">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 左右布局主体 -->
+    <div class="main-layout">
+        <!-- 左侧4个按钮 + 返回 -->
+        <div class="left-menu">
+            <button class="menu-btn active" onclick="showTab(1)">1. 产品展示</button>
+            <button class="menu-btn" onclick="showTab(2)">2. 制作工艺</button>
+            <button class="menu-btn" onclick="showTab(3)">3. 龙灯历史</button>
+            <button class="menu-btn" onclick="showTab(4)">4. 文化传承</button>
+            <a href="1.html" class="menu-btn">← 返回馆藏列表</a>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="right-container">
+            <div class="right-content">
+                <!-- 1. 产品展示 → 图片 + 右侧竖排文字 -->
+                <div class="tab-panel show" id="tab1">
+                    <h3 class="content-title">萧山河上龙灯</h3>
+                    
+                    <div class="img-text-layout">
+                        <img src="龙灯3.jpg"  alt="萧山河上龙灯" class="product-img">
+                        <p class="vertical-text">
+                            萧山河上龙灯（河上板龙）是浙江省杭州市萧山区河上镇独有的传统民俗，也是浙江省非物质文化遗产，被誉为 “江南第一板龙”。整条龙由龙头、龙身（灯板）、龙尾三部分组成，以硬木为底座，灯架为竹篾，灯面绘满山水、花鸟、戏曲人物等图案。龙身可长达数百米，由上百节灯板串联而成，夜间点亮时，万灯齐明、流光溢彩，如火龙游街，气势非凡。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 制作工艺 -->
+                <div class="tab-panel" id="tab2">
+                    <h3 class="content-title">制作工艺</h3>
+                    <p class="product-desc">
+                        河上龙灯的制作工艺集木作、竹编、彩绘、剪纸于一体，工序繁复：<br>
+底座制作：选用坚硬的杉木制作灯板底座，每块灯板长约 2 米，宽 0.3 米，为整条龙提供稳固支撑。
+灯架扎制：以韧性竹篾扎制灯架，每节灯板上有 4-6 盏花灯，造型各异，有宫灯、花篮灯、人物灯等。
+灯面彩绘：灯面以棉纸或丝绸糊裱，绘有三国、水浒等戏曲故事，也有龙凤呈祥、五谷丰登等吉祥图案，色彩艳丽，线条生动。
+组装串连：将灯板依次拼接，用榫卯和绳索固定，龙头重达百余斤，由多名壮汉共同抬起，整条龙可根据队伍人数延长，场面壮观。
+                    </p>
+                    <img src="制作5.jpg"  alt="河上龙灯" width="35%" >
+                    <img src="制作6.jpg"  alt="河上龙灯" width="60%" class="aaa">
+
+                </div>
+
+                <!-- 3. 龙灯历史 -->
+                <div class="tab-panel" id="tab3">
+                    <h3 class="content-title">龙灯历史</h3>
+                    <p class="product-desc">
+                        河上龙灯的传承已跨越千年，与当地的民俗信仰深度绑定：<br>
+起源期（宋代）：河上龙灯起源于南宋，最初是村民为祭祀龙王、祈求风调雨顺而举办的迎神赛会，距今已有 800 多年历史。<br>
+鼎盛期（明清）：明清时期，河上龙灯发展至鼎盛，形制愈发精美，规模不断扩大，成为当地春节、元宵期间最重要的民俗活动，有 “河上灯，萧山景” 的说法。<br>
+传承期（近现代）：民国时期，龙灯活动依然盛行；改革开放后，龙灯活动得以恢复，2009 年被列入浙江省非物质文化遗产名录，成为萧山文化名片。
+                    </p>
+                </div>
+
+                <!-- 4. 文化传承 -->
+                <div class="tab-panel" id="tab4">
+                    <h3 class="content-title">文化传承</h3>
+                    <p class="product-desc">
+                        河上龙灯早已成为河上镇的文化符号，承载着深厚的集体记忆：<br>
+乡土认同的纽带：龙灯的制作与迎灯需要全村人共同参与，每一节灯板都代表一户人家，串联起宗族与邻里的情感，是维系乡情的重要载体。<br>
+民俗信仰的延续：迎龙灯的过程包含祭祀、巡游、祈福等仪式，寄托了百姓对国泰民安、五谷丰登的祈愿，是传统民俗信仰的活态呈现。<br>
+活态保护的典范：如今，河上龙灯不仅在每年春节展演，还走进校园、社区，通过非遗课堂、民俗体验等形式，让年轻人了解传统技艺，让千年龙灯在新时代焕发新生。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        龙韵薪传浙江龙灯数字博物馆 © 2026
+    </div>
+
+    <script>
+        // 切换面板功能
+        function showTab(index) {
+            let panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(p => p.classList.remove('show'));
+            document.getElementById('tab' + index).classList.add('show');
+
+            let btns = document.querySelectorAll('.menu-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>

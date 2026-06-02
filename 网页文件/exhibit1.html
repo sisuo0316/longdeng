@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浦江板凳龙 | 龙韵薪传浙江龙灯数字博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", serif;
+        }
+
+        body {
+            background: #f9f6f0;
+        }
+        .aaa{
+            margin-left: 20px;
+        }
+        /* 导航栏 */
+        .navbar {
+            background: linear-gradient(to right, #9B2226, #B11F24);
+            padding: 0px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .logo .dragon {
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* 主容器：左右布局 */
+        .main-layout {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            height: 700px;
+        }
+
+        /* 左侧按钮栏：垂直均匀分布 */
+        .left-menu {
+            width: 220px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: sticky;
+            top: 100px;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 16px 20px;
+            background: #9B2226;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: #B11F24;
+            color: #FFD700;
+        }
+
+        /* 右侧内容区 */
+        .right-container {
+            flex: 1;
+        }
+
+        .right-content {
+            width: 100%;
+            background: white;
+            border: 2px solid #9B2226;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(130,0,0,0.15);
+            min-height: 600px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.show {
+            display: block;
+        }
+
+        /* 图片 + 竖排文字 布局 */
+        .img-text-layout {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        /* 图片宽度 70% */
+        .product-img {
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* 竖排文字核心样式 */
+        .vertical-text {
+            writing-mode: vertical-rl; /* 文字竖排 */
+            text-orientation: upright;
+            font-size: 16px;
+            line-height: 2.2;
+            color: #444;
+            letter-spacing: 4px;
+            height: 50%;
+        }
+
+        /* 文字样式 */
+        .content-title {
+            color: #9B2226;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .time-tag {
+            background: #9B2226;
+            color: #FFD700;
+            padding: 6px 15px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .product-desc {
+            line-height: 1.9;
+            color: #444;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #9B2226;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .main-layout {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-menu {
+                width: 100%;
+                height: auto;
+                gap: 10px;
+                position: static;
+            }
+            .img-text-layout {
+                flex-direction: column;
+            }
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-orientation: initial;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" width="8%">
+            <h1>龙韵薪传浙江龙灯数字博物馆</h1>
+        </div>
+        <div class="nav-menu">
+            <a href="/index.html">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 左右布局主体 -->
+    <div class="main-layout">
+        <!-- 左侧4个按钮 + 返回 -->
+        <div class="left-menu">
+            <button class="menu-btn active" onclick="showTab(1)">1. 产品展示</button>
+            <button class="menu-btn" onclick="showTab(2)">2. 制作工艺</button>
+            <button class="menu-btn" onclick="showTab(3)">3. 龙灯历史</button>
+            <button class="menu-btn" onclick="showTab(4)">4. 文化传承</button>
+            <a href="/index.html" class="menu-btn">← 返回馆藏列表</a>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="right-container">
+            <div class="right-content">
+                <!-- 1. 产品展示 → 图片 + 右侧竖排文字 -->
+                <div class="tab-panel show" id="tab1">
+                    <h3 class="content-title">浦江板凳龙</h3>
+                    
+                    <div class="img-text-layout">
+                        <img src="龙灯1.jpg"  alt="浦江板凳龙" class="product-img">
+                        <p class="vertical-text">
+                            浦江板凳龙俗称 “长灯”，是浙江省金华市浦江县独有的民俗舞龙，也是国家级非物质文化遗产，更作为 “春节” 的重要组成部分入选了联合国人类非物质文化遗产代表作名录。整条龙由龙头、龙身（子灯）、龙尾三部分组成，龙身由几十节、几百节甚至上千节板凳串联而成，可无限延长，气势磅礴，有 “地上星河” 的美誉。根据龙头造型可分为仰天龙、俯地龙、大虾龙等类别，凳板上的灯彩也有方灯、酒坛灯、人物灯等 11 种不同样式，每一条板凳龙都独一无二。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 制作工艺 -->
+                <div class="tab-panel" id="tab2">
+                    <h3 class="content-title">制作工艺</h3>
+                    <p class="product-desc">
+                        浦江板凳龙是一座移动的民间艺术馆，集多种传统技艺于一体： <br>
+
+骨架扎制：以韧性竹篾为骨，制作龙的框架，传统工艺每侧竹篾多达 4 根，现代改良后更稳固，可支撑起庞大的灯体。
+糊裱彩绘：灯体表面以皮纸或纱布糊裱，绘制龙鳞、花鸟、人物、亭台楼阁等吉祥图案，也融合剪纸、刻花、雕塑等工艺，寓意人丁兴旺、国泰民安。
+组装串联：将灯体固定在 2 米长的木板凳上，内置灯火，再用木棒将板凳依次连接，可根据参与人数拼接成数百米的长龙。
+阵式编排：舞龙时还有麦饼团、剪刀箍、甩尾巴等十几种阵式，动作变化多端，刚柔并济。
+</p>
+                    <img src="制作1.jpg"  alt="浦江板凳龙" width="35%" >
+                    <img src="制作2.jpg"  alt="浦江板凳龙" width="60%" class="aaa">
+                </div>
+
+                <!-- 3. 龙灯历史 -->
+                <div class="tab-panel" id="tab3">
+                    <h3 class="content-title">龙纹历史渊源</h3>
+                    <p class="product-desc">
+                        浦江板凳龙的传承脉络清晰，跨越千年：<br>
+孕育期（唐代）：自唐代起，“龙腾灯舞闹元宵” 就成为浦江民间习俗，浦江县志中已有相关记载。<br>
+成熟期（宋元）：宋代时，板凳龙已在民间广泛流行，形制与舞龙阵式基本成型。
+<br>鼎盛期（明清）：明清时期，浦江板凳龙发展至鼎盛，各村都有自己的龙灯队伍，元宵迎灯成为当地最重要的民俗活动。
+<br>传承期（近现代）：2006 年入选第一批国家级非物质文化遗产名录；2024 年，作为 “春节” 组成部分入选联合国人类非遗，多次登上北京、鸟巢等舞台，成为中国民俗文化的名片。
+                    </p>
+                </div>
+
+                <!-- 4. 文化传承 -->
+                <div class="tab-panel" id="tab4">
+                    <h3 class="content-title">文化传承</h3>
+                    <p class="product-desc">
+                        浦江板凳龙早已超越了 “舞龙” 本身，成为浦江人文化认同与精神的载体：<br>
+精神象征：龙是中华民族的图腾，板凳龙舞龙活动寄托了百姓对风调雨顺、国泰民安的祈愿，也象征着团结协作、奋发向上的精神。<br>
+社区纽带：制作与迎灯需要全村男女老少共同参与，每一节板凳都代表一户人家，串联起宗族与邻里的情感，是维系乡情的重要载体。<br>
+活态传承：如今，浦江板凳龙仍在每年春节、元宵期间展演，不仅保留传统工艺，还融入现代设计，走进校园、社区，让千年民俗在新时代焕发新生。<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        龙韵薪传浙江龙灯数字博物馆 © 2026
+    </div>
+
+    <script>
+        // 切换面板功能
+        function showTab(index) {
+            let panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(p => p.classList.remove('show'));
+            document.getElementById('tab' + index).classList.add('show');
+
+            let btns = document.querySelectorAll('.menu-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>

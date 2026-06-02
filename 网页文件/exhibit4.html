@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浦寨火龙 | 龙韵薪传浙江龙灯数字博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", serif;
+        }
+
+        body {
+            background: #f9f6f0;
+        }
+        .aaa{
+            margin-left: 20px;
+        }
+        /* 导航栏 */
+        .navbar {
+            background: linear-gradient(to right, #9B2226, #B11F24);
+            padding: 0px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .logo .dragon {
+            font-size: 36px;
+            color: #FFD700;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* 主容器：左右布局 */
+        .main-layout {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            height: 700px;
+        }
+
+        /* 左侧按钮栏：垂直均匀分布 */
+        .left-menu {
+            width: 220px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: sticky;
+            top: 100px;
+        }
+
+        .menu-btn {
+            width: 100%;
+            padding: 16px 20px;
+            background: #9B2226;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: #B11F24;
+            color: #FFD700;
+        }
+
+        /* 右侧内容区 */
+        .right-container {
+            flex: 1;
+        }
+
+        .right-content {
+            width: 100%;
+            background: white;
+            border: 2px solid #9B2226;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(130,0,0,0.15);
+            min-height: 600px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.show {
+            display: block;
+        }
+
+        /* 图片 + 竖排文字 布局 */
+        .img-text-layout {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            margin-top: 15px;
+        }
+
+        /* 图片宽度 */
+        .product-img {
+            width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* 竖排文字核心样式 + 靠右对齐 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-size: 16px;
+            line-height: 2.2;
+            color: #444;
+            letter-spacing: 4px;
+            height: 50%;
+            text-align: right;
+        }
+
+        /* 文字样式 */
+        .content-title {
+            color: #9B2226;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .product-desc {
+            line-height: 1.9;
+            color: #444;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #9B2226;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 15px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .main-layout {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-menu {
+                width: 100%;
+                height: auto;
+                gap: 10px;
+                position: static;
+            }
+            .img-text-layout {
+                flex-direction: column;
+            }
+            .vertical-text {
+                writing-mode: horizontal-tb;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" width="8%">
+            <h1>龙韵薪传浙江龙灯数字博物馆</h1>
+        </div>
+        <div class="nav-menu">
+            <a href="index.html">返回首页</a>
+        </div>
+    </div>
+
+    <!-- 左右布局主体 -->
+    <div class="main-layout">
+        <!-- 左侧菜单 -->
+        <div class="left-menu">
+            <button class="menu-btn active" onclick="showTab(1)">1. 产品展示</button>
+            <button class="menu-btn" onclick="showTab(2)">2. 制作工艺</button>
+            <button class="menu-btn" onclick="showTab(3)">3. 龙灯历史</button>
+            <button class="menu-btn" onclick="showTab(4)">4. 文化传承</button>
+            <a href="index.html" class="menu-btn">← 返回馆藏列表</a>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="right-container">
+            <div class="right-content">
+                <!-- 1. 产品展示 -->
+                <div class="tab-panel show" id="tab1">
+                    <h3 class="content-title">浦寨火龙</h3>
+                    <div class="img-text-layout">
+                        <img src="龙灯4.jpg" alt="浦寨火龙" class="product-img">
+                        <p class="vertical-text">
+                            浦寨火龙（又称浦寨烧龙）是广西壮族自治区凭祥市浦寨村独有的传统民俗舞龙，也是当地极具代表性的非物质文化遗产项目，被誉为 “南疆火龙奇观”。整条龙以竹篾为骨、麻布为身、彩纸为鳞，龙身通体为红色，舞动时搭配烟花、火盆等烟火元素，在烈焰与星光中翻腾跳跃，金蛇狂舞，是少有的以 “火” 为核心特色的舞龙项目，场面惊险热烈，极具视觉冲击力。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 制作工艺 -->
+                <div class="tab-panel" id="tab2">
+                    <h3 class="content-title">制作工艺</h3>
+                    <p class="product-desc">
+                        浦寨火龙的制作与表演工艺，是集扎制、彩绘、烟火编排于一体的综合性技艺：<br>
+骨架扎制：以韧性竹篾为原料，扎制龙头、龙身、龙尾的框架，龙头造型威猛，龙角、龙须、龙眼等细节都精心刻画，确保舞动时稳固灵活。
+龙身制作：以麻布或厚布包裹骨架，用彩纸、金箔等材料制作龙鳞、龙鳍，绘制火焰、祥云等吉祥图案，色彩以红、金为主，寓意红火兴旺。
+烟火适配：根据舞龙阵式，提前规划烟花喷射点与火盆摆放位置，制作专用的烟火喷射装置，确保表演时火焰与龙身的节奏配合默契，又兼顾安全。
+阵式编排：舞龙时搭配 “火龙出海”“金龙盘柱”“火龙摆尾” 等经典阵式，表演者赤膊上阵，在烟花火雨中穿梭舞动，展现出野性而热烈的生命力。
+                    </p>
+                    <img src="制作7.jpg" alt="浦寨火龙制作" width="35%" >
+                    <img src="制作8.jpg" alt="浦寨火龙制作" width="60%" class="aaa">
+                </div>
+
+                <!-- 3. 龙灯历史 -->
+                <div class="tab-panel" id="tab3">
+                    <h3 class="content-title">龙灯历史</h3>
+                    <p class="product-desc">
+                        浦寨火龙的传承扎根于南疆边境的民俗信仰，有着独特的发展脉络：<br>
+起源期（明清）：浦寨火龙起源于明清时期，最初是边境村民为祭祀火神、祈求平安兴旺而举办的民俗活动，距今已有数百年历史。<br>
+成熟期（近现代）：随着边境贸易的发展，火龙表演逐渐融合了壮族、汉族的民俗文化元素，表演形式愈发成熟，成为当地春节、重大节庆期间的标志性活动。<br>
+复兴期（当代）：近年来，浦寨火龙被列入当地非物质文化遗产保护项目，通过抢救性记录与传承，这一古老民俗得以重焕光彩，成为凭祥市极具代表性的文化名片。
+                    </p>
+                </div>
+
+                <!-- 4. 文化传承 -->
+                <div class="tab-panel" id="tab4">
+                    <h3 class="content-title">文化传承</h3>
+                    <p class="product-desc">
+                        浦寨火龙早已超越了 “舞龙” 本身，成为南疆边境文化与精神的载体：<br>
+边境文化的融合符号：浦寨地处中越边境，火龙文化融合了壮族、汉族以及边境地区的民俗信仰，是多民族文化交融的生动体现。<br>
+红火兴旺的精神寄托：火龙以烈焰为魂，寄托了百姓对风调雨顺、国泰民安、生活红火的祈愿，也象征着南疆人民热情、勇敢、坚韧的精神特质。<br>
+活态传承的民俗名片：如今，浦寨火龙不仅在本地节庆展演，还走出边境，在各类民俗文化节上亮相，让更多人了解这一独特的南疆民俗，让千年火龙在新时代继续燃烧。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        龙韵薪传浙江龙灯数字博物馆 © 2026
+    </div>
+
+    <script>
+        // 切换面板功能
+        function showTab(index) {
+            let panels = document.querySelectorAll('.tab-panel');
+            panels.forEach(p => p.classList.remove('show'));
+            document.getElementById('tab' + index).classList.add('show');
+
+            let btns = document.querySelectorAll('.menu-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>
