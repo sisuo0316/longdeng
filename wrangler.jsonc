@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "longdeng",
+  "compatibility_date": "2026-06-02",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "网页文件"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
